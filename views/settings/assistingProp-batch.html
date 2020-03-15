@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=1280, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="renderer" content="webkit|ie-stand|ie-comp">
+	<title>小微企业ERP</title>
+	<link href="../../statics/saas/scm/app2_release/css/common.css?ver=20150522" rel="stylesheet" type="text/css">
+	<link href="../../statics/saas/scm/app2_release/css/green/ui.min.css?ver=20150522" rel="stylesheet">
+	<script src="../../statics/saas/scm/app2_release/js/common/libs/jquery/jquery-1.10.2.min.js?10"></script>
+	<script src="../../statics/saas/scm/app2_release/js/common/libs/json3.min.js?10"></script>
+	<script src="../../statics/saas/scm/app2_release/js/common/common.js?ver=20151021"></script>
+	<script src="../../statics/saas/scm/app2_release/js/common/grid.js?ver=20151021"></script>
+	<script src="../../statics/saas/scm/app2_release/js/common/plugins.js?ver=20151021"></script>
+	<script src="../../statics/saas/scm/app2_release/js/common/plugins/jquery.dialog.js?self=true&ver=20151021"></script>
+
+<script type="text/javascript">
+var DOMAIN = document.domain;
+var WDURL = "";
+var SCHEME= "<?php echo sys_skin()?>";
+try{
+	document.domain = '<?php echo base_url()?>';
+}catch(e){
+}
+//ctrl+F5 增加版本号来清空iframe的缓存的
+$(document).keydown(function(event) {
+	/* Act on the event */
+	if(event.keyCode === 116 && event.ctrlKey){
+		var defaultPage = Public.getDefaultPage();
+		var href = defaultPage.location.href.split('?')[0] + '?';
+		var params = Public.urlParam();
+		params['version'] = Date.parse((new Date()));
+		for(i in params){
+			if(i && typeof i != 'function'){
+				href += i + '=' + params[i] + '&';
+			}
+		}
+		defaultPage.location.href = href;
+		event.preventDefault();
+	}
+});
+</script>
+
+<style>
+#matchCon { width: 220px; }
+</style>
+</head>
+
+<body>
+<div class="container" style="margin:20px;">
+  <div class="mod-search m0 cf">
+     <ul class="ul-inline">
+       <li>
+         <input type="text" id="matchCon" class="ui-input ui-input-ph" value="输入规格、属性名称查询">
+       </li>
+       <li><a class="ui-btn" id="search">查询</a></li>
+       <li><a class="ui-btn ui-btn-sp" id="add">新增</a></li>
+     </ul>
+  </div>
+  <div class="grid-wrap">
+    <table id="grid">
+    </table>
+    <div id="page"></div>
+  </div>
+</div>
+<script src="../../statics/js/dist/assistingPropBatch.js?ver=20140430"></script>
+</body>
+</html>
+
+ 
