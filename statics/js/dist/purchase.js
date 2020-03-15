@@ -4,8 +4,8 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 	requiredMoney = system.requiredMoney,
 	taxRequiredCheck = system.taxRequiredCheck,
 	taxRequiredInput = system.taxRequiredInput,
-	hiddenAmount = !1,
-	hideCustomerCombo = !1,
+	hiddenAmount = false,
+	hideCustomerCombo = false,
 	urlParam = Public.urlParam(),
 	disEditable = urlParam.disEditable,
 	defaultPage = Public.getDefaultPage(),
@@ -50,28 +50,43 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 			this.$_checkName = $("#checkName");
 			this.customerArrears = 0;
 			this.$_note.placeholder();
-			"150502" == originalData.transType ? (parent.$("#page-tab").find("li.l-selected").children("a").html("购货退货单"),$("#paymentTxt").html("本次退款")) : (parent.$("#page-tab").find("li.l-selected").children("a").html("购货单"), $("#paymentTxt").html("本次付款")), 
+			if("150502" == originalData.transType){
+				parent.$("#page-tab").find("li.l-selected").children("a").html("购货退货单");
+				$("#paymentTxt").html("本次退款") 
+			}else{
+				parent.$("#page-tab").find("li.l-selected").children("a").html("购货单");
+				$("#paymentTxt").html("本次付款")
+			}
+			//初始化供应商下拉数据
 			this.customerCombo = Business.billSupplierCombo($("#customer"), {
 				defaultSelected: -1
 			});
-			"add" !== a.status || a.buId ? (this.$_customer.data("contactInfo", {
-				id: a.buId,
-				name: a.contactName
-			}),this.customerCombo.input.val(a.contactName)) : Public.ajaxPost(defaultPage.WDURL + "/basedata/contact/getRecentlyContact?action=getRecentlyContact", {
-				transType: originalData.transType,
-				billType: "PUR"
-			}, function(a) {
-				if ("" == b.customerCombo.input.val()) {
-					a = a.data;
-					var c = {
-						id: a.buId,
-						name: a.contactName,
-						cLevel: a.cLevel
-					};
-					b.$_customer.data("contactInfo", c), b.customerCombo.input.val(a.contactName)
-				}
-			}), 
-			hideCustomerCombo && this.customerCombo.disable(), this.$_date.datepicker({
+			if("add" !== a.status || a.buId){
+				this.$_customer.data("contactInfo", {
+					id: a.buId,
+					name: a.contactName
+				});
+				this.customerCombo.input.val(a.contactName)
+			}else{
+				Public.ajaxPost(defaultPage.WDURL + "/basedata/contact/getRecentlyContact?action=getRecentlyContact", {
+					transType: originalData.transType,
+					billType: "PUR"
+				}, function(a) {
+					if ("" == b.customerCombo.input.val()) {
+						a = a.data;
+						var c = {
+							id: a.buId,
+							name: a.contactName,
+							cLevel: a.cLevel
+						};
+						b.$_customer.data("contactInfo", c);
+						b.customerCombo.input.val(a.contactName);
+					}
+				})
+			}
+			
+			hideCustomerCombo && this.customerCombo.disable();
+			this.$_date.datepicker({
 				onSelect: function(a) {
 					if (!(originalData.id > 0)) {
 						var c = a.format("yyyy-MM-dd");
@@ -86,7 +101,16 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 						})
 					}
 				}
-			}), a.serialno && this.$_serialno.val(a.serialno),a.description && this.$_note.val(a.description), this.$_discountRate.val(a.disRate), this.$_deduction.val(a.disAmount), this.$_discount.val(a.amount), this.$_payment.val(a.rpAmount), this.$_arrears.val(a.arrears), requiredMoney && ($("#accountWrap").show(), SYSTEM.isAdmin !== !1 || SYSTEM.rights.SettAcct_QUERY ? this.accountCombo = Business.accountCombo($("#account"), {
+			});
+			a.serialno && this.$_serialno.val(a.serialno),
+			a.description && this.$_note.val(a.description), 
+			this.$_discountRate.val(a.disRate), 
+			this.$_deduction.val(a.disAmount), 
+			this.$_discount.val(a.amount), 
+			this.$_payment.val(a.rpAmount), 
+			this.$_arrears.val(a.arrears), 
+			requiredMoney && ($("#accountWrap").show(), 
+			SYSTEM.isAdmin !== !1 || SYSTEM.rights.SettAcct_QUERY ? this.accountCombo = Business.accountCombo($("#account"), {
 				width: 112,
 				height: 300,
 				emptyOptions: !0,
@@ -127,12 +151,11 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 				e = '<a id="add" class="ui-btn ui-btn-sp">新增</a><a href="../scm/invPu/toPdf?action=toPdf&id=' + a.id + '" target="_blank" id="print" class="ui-btn">打印</a>',
 				f = "",
 				g = "";
-			  sfa= "150501" == a.transType?'<a class="ui-btn" id="sure">保存入库</a>':'<a class="ui-btn" id="sure">保存出库</a>';
+			  sfa= "150501" == a.transType ?'<a class="ui-btn" id="sure">保存入库</a>':'<a class="ui-btn" id="sure">保存出库</a>';
 			 	sfb= "150501" == a.transType?'<a class="ui-btn" id="sureall">完成入库</a>':'<a class="ui-btn" id="sureall">完成出库</a>';
 			if(!a.surealled){
 				sfa=sfa+sfb;
-			}
-			else{
+			}else{
 				sfa="";
 				$("#mark").addClass("has-sured");
 			}

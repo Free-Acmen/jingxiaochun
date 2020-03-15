@@ -1,6 +1,7 @@
 var Public = Public || {};
 var Business = Business || {};
 Public.isIE6 = !window.XMLHttpRequest;	//ie6
+Public.WDURL = 'http://localhost:5000';
 
 $(function(){
 	//菜单按钮
@@ -1068,7 +1069,7 @@ Business.billSupplierCombo = function($_obj, opts){
 		}
 	}, opts);
 	return Business.supplierCombo($_obj, opts);
-}
+};
 Business.supplierCombo = function($_obj, opts){
 	if ($_obj.length == 0) { return };
 	var defaultPage = Public.getDefaultPage();
@@ -1125,7 +1126,7 @@ Business.supplierCombo = function($_obj, opts){
 		};
 		$.dialog({
 			title : '新增供应商',
-			content : 'url:../settings/vendor_manage',
+			content : 'url:../../settings/vendor-manage.html',
 			data: {oper: 'add', callback: function(data, oper, dialogWin){
 				//parent.getCustomer();
 				//_self.customerCombo.selectByValue(data.id, false);

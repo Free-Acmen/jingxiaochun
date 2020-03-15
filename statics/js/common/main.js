@@ -1095,7 +1095,7 @@ define(["jquery", "plugins", "grid", "dialog", "datepicker"], function(require, 
 			};
 			$.dialog({
 				title : '新增供应商',
-				content : 'url:../settings/vendor_manage',
+				content : 'url:../../settings/vendor-manage.html',
 				data: {oper: 'add', callback: function(data, oper, dialogWin){
 					//parent.getCustomer();
 					//_self.customerCombo.selectByValue(data.id, false);
