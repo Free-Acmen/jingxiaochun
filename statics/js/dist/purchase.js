@@ -150,22 +150,27 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 				d = '<a id="add" class="ui-btn ui-btn-sp">新增</a><a href="../scm/invPu/toPdf?action=toPdf&id=' + a.id + '" target="_blank" id="print" class="ui-btn">打印</a><a id="edit" class="ui-btn">保存</a>',
 				e = '<a id="add" class="ui-btn ui-btn-sp">新增</a><a href="../scm/invPu/toPdf?action=toPdf&id=' + a.id + '" target="_blank" id="print" class="ui-btn">打印</a>',
 				f = "",
-				g = "";
-			  sfa= "150501" == a.transType ?'<a class="ui-btn" id="sure">保存入库</a>':'<a class="ui-btn" id="sure">保存出库</a>';
+				g = "",
+			  	sfa= "150501" == a.transType ?'<a class="ui-btn" id="sure">保存入库</a>':'<a class="ui-btn" id="sure">保存出库</a>',
 			 	sfb= "150501" == a.transType?'<a class="ui-btn" id="sureall">完成入库</a>':'<a class="ui-btn" id="sureall">完成出库</a>';
-			if(!a.surealled){
-				sfa=sfa+sfb;
-			}else{
-				sfa="";
-				$("#mark").addClass("has-sured");
-			}
+				if(!a.surealled){
+					sfa=sfa+sfb;
+					sfa="";
+				}else{
+					sfa="";
+					$("#mark").addClass("has-sured");
+				}
 			
 			billRequiredCheck ? (f = '<a class="ui-btn" id="audit">审核</a>', g = '<a class="ui-btn" id="reAudit">反审核</a>') : this.$_checkName.parent().hide();
 			var h = '<a class="ui-btn-prev" id="prev" title="上一张"><b></b></a><a class="ui-btn-next" id="next" title="下一张"><b></b></a>';
 			this.btn_edit = d, this.btn_audit = f, this.btn_view = e, this.btn_reaudit = g, a.id > 0 ? (this.$_number.text(a.billNo), this.$_date.val(a.date), this.$_totalArrears.val(a.totalArrears), this.$_accountInfo.data("accountInfo", a.accounts), -1 === a.accId && (this.$_accountInfo.show(), b.$_payment.attr("disabled", "disabled").addClass("ui-input-dis")), $("#grid").jqGrid("footerData", "set", {
 				preQty: a.totalQty,
 				amount: a.totalAmount
-			}), "list" !== urlParam.flag && (h = ""), "edit" === a.status ? this.$_toolBottom.html("<span id=groupBtn>" + d + f + "</span>" + h) : a.checked ? ($("#mark").addClass("has-audit"), this.$_toolBottom.html('<span id="groupBtn">' + e + g +sfa +"</span>" + h)) : this.$_toolBottom.html('<span id="groupBtn">' + e + "</span>" + h), "150502" == a.transType ? this.idList = parent.cacheList.purchaseBackId || [] : this.idList = parent.cacheList.purchaseId || [], this.idPostion = $.inArray(String(a.id), this.idList), this.idLength = this.idList.length, 0 === this.idPostion && $("#prev").addClass("ui-btn-prev-dis"), this.idPostion === this.idLength - 1 && $("#next").addClass("ui-btn-next-dis"), this.$_userName.html(a.userName), this.$_modifyTime.html(a.modifyTime), this.$_createTime.html(a.createTime), this.$_checkName.html(a.checkName)) : (billRequiredCheck ? this.$_toolBottom.html("<span id=groupBtn>" + c + f+sfa + "</span>") : this.$_toolBottom.html('<span id="groupBtn">' + c + "</span>"), this.$_userName.html(system.realName || ""), this.$_modifyTime.parent().hide(), this.$_createTime.parent().hide(), this.$_checkName.parent().hide()), disEditable && (THISPAGE.disableEdit(a), this.$_toolBottom.hide())
+			}), "list" !== urlParam.flag && (h = ""), 
+			"edit" === a.status ? this.$_toolBottom.html("<span id=groupBtn>" + d + f + "</span>" + h) : a.checked ? ($("#mark").addClass("has-audit"), this.$_toolBottom.html('<span id="groupBtn">' + e + g +sfa +"</span>" + h)) : this.$_toolBottom.html('<span id="groupBtn">' + e + "</span>" + h), 
+			"150502" == a.transType ? this.idList = parent.cacheList.purchaseBackId || [] : this.idList = parent.cacheList.purchaseId || [], this.idPostion = $.inArray(String(a.id), this.idList), this.idLength = this.idList.length, 
+			0 === this.idPostion && $("#prev").addClass("ui-btn-prev-dis"), 
+			this.idPostion === this.idLength - 1 && $("#next").addClass("ui-btn-next-dis"), this.$_userName.html(a.userName), this.$_modifyTime.html(a.modifyTime), this.$_createTime.html(a.createTime), this.$_checkName.html(a.checkName)) : (billRequiredCheck ? this.$_toolBottom.html("<span id=groupBtn>" + c + f+sfa + "</span>") : this.$_toolBottom.html('<span id="groupBtn">' + c + "</span>"), this.$_userName.html(system.realName || ""), this.$_modifyTime.parent().hide(), this.$_createTime.parent().hide(), this.$_checkName.parent().hide()), disEditable && (THISPAGE.disableEdit(a), this.$_toolBottom.hide())
 //			if(a&&a.surealled){
 //				 $("#grid").jqGrid("setGridParam", {
 //				cellEdit: !1
