@@ -1874,7 +1874,7 @@ Business.categoryCombo = function($_obj, opts, type){
 			if(defaultPage.SYSTEM.categoryInfo && defaultPage.SYSTEM.categoryInfo[typeNumber]) {
 				return defaultPage.SYSTEM.categoryInfo[typeNumber];
 			} else {
-				return '../basedata/assist?action=list&isDelete=2&typeNumber='+typeNumber;
+				return Public.WDURL + '/basedata/assist?action=list&isDelete=2&typeNumber='+typeNumber;
 			}
 		},
 		ajaxOptions: {
@@ -2164,7 +2164,7 @@ Business.paymentCombo = function($_obj, opts){
 			if(SYSTEM.paymentInfo) {
 				return SYSTEM.paymentInfo;
 			} else {
-				return '../basedata/assist?action=list&typeNumber=PayMethod&isDelete=2';
+				return Public.WDURL + '/basedata/assist?action=list&typeNumber=PayMethod&isDelete=2';
 			}
 		},
 		ajaxOptions: {
@@ -2300,9 +2300,9 @@ Business.billsEvent = function(obj, type, flag){
 			var lable = $('#customer').prev().text().slice(0, -1);
 			var title = '选择' + lable;
 			if(lable === '供应商' || lable === '购货单位') {
-				var content = 'url:../settings/select_customer?type=10';
+				var content = 'url:/views/settings/select-customer.html?type=10';
 			} else {
-				var content = 'url:../settings/select_customer';
+				var content = 'url:/views/settings/select-customer.html';
 			}
 			_self.customerDialog = $.dialog({
 				width: 775,
@@ -2336,7 +2336,7 @@ Business.billsEvent = function(obj, type, flag){
 					width: 775,
 					height: 510,
 					title: '选择商品',
-					content: 'url:../settings/goods_batch',
+					content: 'url:/views/settings/goods-batch.html',
 					data: {
 						skuMult: skuMult,
 						skey:_self.skey,
@@ -2617,7 +2617,7 @@ Business.filterSupplier = function(){
 			width: 570,
 			height: 500,
 			title: '选择供应商',
-			content: 'url:../settings/supplier_batch',
+			content: 'url:/views/settings/supplier_batch',
 			data:{isDelete:2},
 			lock: true,
 			ok: function(){
@@ -2694,7 +2694,7 @@ Business.filterGoods = function(){
 			width: 775,
 			height: 500,
 			title: '选择商品',
-			content: 'url:../settings/goods_batch',
+			content: 'url:/views/settings/goods-batch.html',
 			data:{
 				isDelete:2//获取全部商品要传2。。。
 			},
@@ -3037,7 +3037,7 @@ Public.zTree = {
         self.obj = $(self._getTemplate(opts)); 
         self.container.append(self.obj);
         setting = $.extend(true, self.setting, setting);
-        Public.ajaxPost(opts.url || '../basedata/assist?action=list&typeNumber=trade&isDelete=2', {}, function(data) {
+        Public.ajaxPost(opts.url || Public.WDURL + '/basedata/assist?action=list&typeNumber=trade&isDelete=2', {}, function(data) {
             if (data.status === 200 && data.data) {
             	self._callback(data.data.items);
             } else {
@@ -3247,7 +3247,7 @@ Public.categoryPop = function(type,targetWin,callback){
 						var oper = 'add'; 
 						var params = { name: category ,typeNumber: type};
 						var msg = '新增类别';
-						Public.ajaxPost('../basedata/assist/add?action=' + oper, params, function(data){
+						Public.ajaxPost(Public.WDURL + '/basedata/assist/add?action=' + oper, params, function(data){
 							if (data.status == 200) {
 								defaultPage.Public.tips({content : msg + '成功！'});
 								defaultPage.SYSTEM.categoryInfo[type].push(data.data);

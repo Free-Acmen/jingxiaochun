@@ -196,7 +196,7 @@ var api = frameElement.api,
 			}
 			$(window).height() - $(".grid-wrap").offset().top - 84;
 			$("#grid").jqGrid({
-				url: "../basedata/inventory?action=list",
+				url: Public.WDURL + "/basedata/inventory?action=list",
 				postData: queryConditions,
 				datatype: "json",
 				width: 578,
@@ -355,7 +355,8 @@ var api = frameElement.api,
 				onSelectRow: function(a, b) {
 					if (b) {
 						var c = $grid.jqGrid("getRowData", a);
-						skuMult && c.skuClassId > 0 ? ($("#grid").jqGrid("setSelection", a, !1), $.dialog({
+            skuMult && c.skuClassId > 0 ? ($("#grid").jqGrid("setSelection", a, !1), 
+            $.dialog({
 							width: 470,
 							height: 400,
 							title: "选择【" + c.number + " " + c.name + "】的属性",

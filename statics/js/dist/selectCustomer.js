@@ -56,7 +56,7 @@ var urlParam = Public.urlParam(),
 			}, a)
 		},
 		loadGrid: function() {
-			var a = "../basedata/contact?action=list";
+			var a = Public.WDURL + "/basedata/contact?action=list";
 			"10" === urlParam.type && (a += "&type=10");
 			var b = ($(window).height() - $(".grid-wrap").offset().top - 84, [{
 				name: "customerType",

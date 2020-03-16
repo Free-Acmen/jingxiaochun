@@ -274,7 +274,7 @@ var dataReflush, list = {
 
   puDetail: {
       name: "采购明细表",
-      href: "./report/pu_detail_new.html",
+      href: "./report/pu-detail-new.html",
       dataRight: "PUREOORTDETAIL_QUERY",
       target: "report-purchase"
   },
@@ -288,7 +288,7 @@ var dataReflush, list = {
 
   puSummary: {
       name: "采购汇总表（按商品）",
-      href: "./report/pu_summary_new.html",
+      href: "./report/pu-summary-new.html",
       dataRight: "PUREPORTINV_QUERY",
       target: "report-purchase"
   },
@@ -301,7 +301,7 @@ var dataReflush, list = {
 
   puSummarySupply: {
       name: "采购汇总表（按供应商）",
-      href: "./report/pu_summary_supply_new.html",
+      href: "./report/pu-summary-supply-new.html",
       dataRight: "PUREPORTPUR_QUERY",
       target: "report-purchase"
   },
@@ -319,20 +319,20 @@ var dataReflush, list = {
   //	},
   salesDetail: {
       name: "销售明细表",
-      href: "./report/sales_detail.html",
+      href: "./report/sales-detail.html",
       dataRight: "SAREPORTDETAIL_QUERY",
       target: "report-sales"
   },
   salesSummary: {
       name: "销售汇总表（按商品）",
-      href: "./report/sales_summary.html",
+      href: "./report/sales-summary.html",
       dataRight: "SAREPORTINV_QUERY",
       target: "report-sales"
   },
 
   salesSummaryCustomer: {
       name: "销售汇总表（按客户）",
-      href: "./report/sales_summary_customer_new.html",
+      href: "./report/sales-summary-customer-new.html",
       dataRight: "SAREPORTBU_QUERY",
       target: "report-sales"
   },
@@ -345,13 +345,13 @@ var dataReflush, list = {
 
   contactDebt: {
       name: "往来单位欠款表",
-      href: "./report/contact_debt_new.html",
+      href: "./report/contact-debt-new.html",
       dataRight: "ContactDebtReport_QUERY",
       target: "report-sales"
   },
   salesProfit: {
       name: "销售利润表",
-      href: "./report/sales_profit.html",
+      href: "./report/sales-profit.html",
       dataRight: "SAREPORTINV_QUERY",
       target: "report-sales"
   },
@@ -363,19 +363,19 @@ var dataReflush, list = {
   //	},
   initialBalance: {
       name: "商品库存余额表",
-      href: "./report/goods_balance.html",
+      href: "./report/goods-balance.html",
       dataRight: "InvBalanceReport_QUERY",
       target: "report-storage"
   },
   goodsFlowDetail: {
       name: "商品收发明细表",
-      href: "./report/goods_flow_detail.html",
+      href: "./report/goods-flow-detail.html",
       dataRight: "DeliverDetailReport_QUERY",
       target: "report-storage"
   },
   goodsFlowSummary: {
       name: "商品收发汇总表",
-      href: "./report/goods_flow_summary.html",
+      href: "./report/goods-flow-summary.html",
       dataRight: "DeliverSummaryReport_QUERY",
       target: "report-storage"
   },
@@ -393,74 +393,74 @@ var dataReflush, list = {
 //   },
   cashBankJournal: {
       name: "现金银行报表",
-      href: "./report/cash_bank_journal_new.html",
+      href: "./report/cash-bank-journal-new.html",
       dataRight: "SettAcctReport_QUERY",
       target: "report-money"
   },
   accountPayDetail: {
       name: "应付账款明细表",
-      href: "./report/account_pay_detail_new.html?action=detailSupplier&type=10",
+      href: "./report/account-pay-detail-new.html?action=detailSupplier&type=10",
       dataRight: "PAYMENTDETAIL_QUERY",
       target: "report-money"
   },
   accountProceedsDetail: {
       name: "应收账款明细表",
-      href: "./report/account_proceeds_detail_new.html?action=detail",
+      href: "./report/account-proceeds-detail-new.html?action=detail",
       dataRight: "RECEIPTDETAIL_QUERY",
       target: "report-money"
   },
   customersReconciliation: {
       name: "客户对账单",
-      href: "./report/customers_reconciliation_new.html",
+      href: "./report/customers-reconciliation-new.html",
       dataRight: "CUSTOMERBALANCE_QUERY",
       target: "report-money"
   },
   suppliersReconciliation: {
       name: "供应商对账单",
-      href: "./report/suppliers_reconciliation_new.html",
+      href: "./report/suppliers-reconciliation-new.html",
       dataRight: "SUPPLIERBALANCE_QUERY",
       target: "report-money"
   },
 
   otherIncomeExpenseDetail: {
       name: "其他收支明细表",
-      href: "./report/other_income_expense_detail.html",
+      href: "./report/other-income-expense-detail.html",
       dataRight: "ORIDETAIL_QUERY",
       target: "report-money"
   },
   customerList: {
       name: "客户管理",
-      href: "./settings/customer_list.html",
+      href: "./settings/customer-list.html",
       dataRight: "BU_QUERY",
       target: "setting-base"
   },
   vendorList: {
       name: "供应商管理",
-      href: "../settings/vendor_list",
+      href: "../settings/vendor-list",
       dataRight: "PUR_QUERY",
       target: "setting-base"
   },
   goodsList: {
       name: "商品管理",
-      href: "./settings/goods_list.html",
+      href: "./settings/goods-list.html",
       dataRight: "INVENTORY_QUERY",
       target: "setting-base"
   },
   storageList: {
       name: "仓库管理",
-      href: "./settings/storage_list.html",
+      href: "./settings/storage-list.html",
       dataRight: "INVLOCTION_QUERY",
       target: "setting-base"
   },
   staffList: {
       name: "职员管理",
-      href: "./settings/staff_list.html",
+      href: "./settings/staff-list.html",
       dataRight: "STAFF_QUERY",
       target: "setting-base"
   },
   settlementaccount: {
       name: "账户管理",
-      href: "./settings/settlement_account.html",
+      href: "./settings/settlement-account.html",
       dataRight: "SettAcct_QUERY",
       target: "setting-base"
   }/*,
@@ -479,32 +479,32 @@ serialnoList: {
   //	},
   customerCategoryList: {
       name: "客户类别",
-      href: "./settings/category_list.html?typeNumber=customertype",
+      href: "./settings/category-list.html?typeNumber=customertype",
       dataRight: "BUTYPE_QUERY",
       target: "setting-auxiliary"
   },
   vendorCategoryList: {
       name: "供应商类别",
-      href: "./settings/category_list.html?typeNumber=supplytype",
+      href: "./settings/category-list.html?typeNumber=supplytype",
       dataRight: "SUPPLYTYPE_QUERY",
       target: "setting-auxiliary"
   },
   goodsCategoryList: {
       name: "商品类别",
-      href: "./settings/category_list.html?typeNumber=trade",
+      href: "./settings/category-list.html?typeNumber=trade",
       dataRight: "TRADETYPE_QUERY",
       target: "setting-auxiliary"
   },
 
   payCategoryList: {
       name: "支出类别",
-      href: "./settings/category_list.html?typeNumber=paccttype",
+      href: "./settings/category-list.html?typeNumber=paccttype",
       dataRight: "TRADETYPE_QUERY",
       target: "setting-auxiliary"
   },
   recCategoryList: {
       name: "收入类别",
-      href: "./settings/category_list.html?typeNumber=raccttype",
+      href: "./settings/category-list.html?typeNumber=raccttype",
       dataRight: "TRADETYPE_QUERY",
       target: "setting-auxiliary"
   },
