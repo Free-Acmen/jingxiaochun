@@ -542,7 +542,7 @@ serialnoList: {
   operationLog: {
       name: "操作日志",
       //href: WDURL + "/basedata/log/initloglist",
-      href: "./settings/log.html",
+      href: "./settings/log-initloglist.html",
       dataRight: "OPERATE_QUERY",
       target: "setting-advancedSetting"
   },

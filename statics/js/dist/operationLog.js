@@ -22,7 +22,7 @@ var queryConditions = {
 				text: "name",
 				value: "userid",
 				width: 240,
-				data: "../basedata/log/queryAllUser?action=queryAllUser",
+				data: Public.WDURL + "/basedata/log/queryAllUser?action=queryAllUser",
 				ajaxOptions: {
 					formatData: function(a) {
 						return a.data.items.unshift({
@@ -35,7 +35,7 @@ var queryConditions = {
 				text: "operateTypeName",
 				value: "indexid",
 				width: 240,
-				data: "../basedata/log/queryAllOperateType?action=queryAllOperateType",
+				data: Public.WDURL + "/basedata/log/queryAllOperateType?action=queryAllOperateType",
 				ajaxOptions: {
 					formatData: function(a) {
 						return a.data.items.unshift({
@@ -60,7 +60,7 @@ var queryConditions = {
 					//user: "所有用户" === f ? "" : f,
 					//type: c.typeCombo.getValue()
 				}, $("#grid").jqGrid("setGridParam", {
-					url: "../basedata/log?action=list",
+					url: Public.WDURL + "/basedata/log?action=list",
 					page: 1,
 					postData: queryConditions,
 					datatype: "json"
@@ -72,7 +72,7 @@ var queryConditions = {
 		loadGrid: function() {
 			var a = Public.setGrid();
 			$("#grid").jqGrid({
-				url: "../basedata/log?action=list",
+				url: Public.WDURL + "/basedata/log?action=list",
 				postData: queryConditions,
 				datatype: "json",
 				autowidth: !0,
@@ -127,7 +127,7 @@ var queryConditions = {
 		},
 		reloadData: function(a) {
 			$("#grid").jqGrid("setGridParam", {
-				url: "../basedata/log?action=list",
+				url: Public.WDURL + "/basedata/log?action=list",
 				page: 1,
 				datatype: "json",
 				postData: a
