@@ -134,8 +134,8 @@ $(function() {
 						else {
 							var a = $("#customer").prev().text().slice(0, -1),
 								c = "选择" + a;
-							if ("供应商" === a || "购货单位" === a) var d = "url:../settings/select_customer?type=10";
-							else var d = "url:../settings/select_customer";
+							if ("供应商" === a || "购货单位" === a) var d = "url:/views/settings/select-customer.html?type=10";
+							else var d = "url:/views/settings/select-customer.html";
 							b.customerDialog = $.dialog({
 								width: 775,
 								height: 510,

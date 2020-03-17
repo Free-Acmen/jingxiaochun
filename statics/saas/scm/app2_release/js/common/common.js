@@ -2576,7 +2576,7 @@ Business.filterCustomer = function(){
 			width: 570,
 			height: 500,
 			title: '选择客户',
-			content: 'url:../settings/customer_batch',
+			content: 'url:/views/settings/customer-batch.html',
 			data:{isDelete:2},
 			lock: true,
 			ok: function(){
@@ -2617,7 +2617,7 @@ Business.filterSupplier = function(){
 			width: 570,
 			height: 500,
 			title: '选择供应商',
-			content: 'url:/views/settings/supplier_batch',
+			content: 'url:/views/settings/supplier-batch.html',
 			data:{isDelete:2},
 			lock: true,
 			ok: function(){
@@ -2658,7 +2658,7 @@ Business.filterSettlementAccount = function(){
 			width: 470,
 			height: 500,
 			title: '选择结算账户',
-			content: 'url:../settings/settlementAccount_batch',
+			content: 'url:/views/settings/settlementAccount-batch.html',
 			data:{isDelete:2},
 			lock: true,
 			ok: function(){
@@ -2736,7 +2736,7 @@ Business.filterStorage = function(){
 			width: 510,
 			height: 500,
 			title: '选择仓库',
-			content: 'url:../settings/storage_batch',
+			content: 'url:/views/settings/storage-batch.html',
 			data:{isDelete:2},
 			lock: true,
 			ok: function(){
@@ -2776,7 +2776,7 @@ Business.filterSaler = function(){
 			width: 510,
 			height: 500,
 			title: '选择销售员',
-			content: 'url:../settings/saler_batch',
+			content: 'url:/views/settings/saler-batch.html',
 			data:{isDelete:2},
 			lock: true,
 			ok: function(){
@@ -2841,7 +2841,6 @@ Business.gridEvent = function(){
 	});
 };
 
-//add by michen 20170717
 Business.queryGoodEvent = function(obj){
 	var _self = obj;
 	var defaultPage = Public.getDefaultPage();
@@ -2856,7 +2855,7 @@ Business.queryGoodEvent = function(obj){
 				width: 630,
 				height: 300,
 				title: '选择商品',
-				content: 'url:../settings/goods_batch',
+				content: 'url:/views/settings/goods-batch.html',
 				data: {
 					skuMult: skuMult,
 					skey:_self.skey,
@@ -2974,7 +2973,7 @@ Public.print = function (opt){
 	};
 	$.dialog({
 		title: opt.title,
-		content : 'url:../prints/print_settings_voucher',
+		content : 'url:/views/prints/print-settings-voucher.html',
 		data: {taodaData: data, pdfData: data, pdfUrl: pdfUrl, billType:billType ,opt:opt},
 		width: 520,
 		height: 400,

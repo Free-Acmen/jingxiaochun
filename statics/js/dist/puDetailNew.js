@@ -1,6 +1,19 @@
 define(["jquery", "print"], function(a, b, c) {
 	function d() {
-		Business.filterSupplier(), Business.filterGoods(), Business.filterStorage(), Business.moreFilterEvent(), k("#conditions-trigger").trigger("click"), k("#filter-fromDate").val(m.beginDate || ""), k("#filter-toDate").val(m.endDate || ""), k("#filter-customer input").val(m.customerNo || ""), k("#filter-goods input").val(m.goodsNo || ""), k("#filter-storage input").val(m.storageNo || ""), m.beginDate && m.endDate && (k("#selected-period").text(m.beginDate + "至" + m.endDate), k("div.grid-subtitle").text("日期: " + m.beginDate + " 至 " + m.endDate)), k("#filter-fromDate, #filter-toDate").datepicker(), k("#filter-submit").on("click", function(a) {
+		Business.filterSupplier(), 
+		Business.filterGoods(), 
+		Business.filterStorage(), 
+		Business.moreFilterEvent(), 
+		k("#conditions-trigger").trigger("click"), 
+		k("#filter-fromDate").val(m.beginDate || ""), 
+		k("#filter-toDate").val(m.endDate || ""), 
+		k("#filter-customer input").val(m.customerNo || ""), 
+		k("#filter-goods input").val(m.goodsNo || ""), 
+		k("#filter-storage input").val(m.storageNo || ""), 
+		m.beginDate && m.endDate && (k("#selected-period").text(m.beginDate + "至" + m.endDate), 
+		k("div.grid-subtitle").text("日期: " + m.beginDate + " 至 " + m.endDate)), 
+		k("#filter-fromDate, #filter-toDate").datepicker(), 
+		k("#filter-submit").on("click", function(a) {
 			a.preventDefault();
 			var b = k("#filter-fromDate").val(),
 				c = k("#filter-toDate").val();
@@ -14,7 +27,8 @@ define(["jquery", "print"], function(a, b, c) {
 				goodsNo: k("#filter-goods input").val() || "",
 				storageNo: k("#filter-storage input").val() || ""
 			}, k("#selected-period").text(b + "至" + c), k("div.grid-subtitle").text("日期: " + b + " 至 " + c), j(), void k("#filter-menu").removeClass("ui-btn-menu-cur"))
-		}), k("#filter-reset").on("click", function(a) {
+		}), 
+		k("#filter-reset").on("click", function(a) {
 			a.preventDefault(), k("#filter-fromDate").val(m.beginDate), k("#filter-toDate").val(m.endDate), k("#filter-customer input").val(""), k("#filter-goods input").val(""), k("#filter-storage input").val(""), m.customerNo = "", m.goodsNo = "", m.storageNo = ""
 		})
 	}
@@ -159,7 +173,7 @@ define(["jquery", "print"], function(a, b, c) {
 					parent.tab.addTabItem({
 						tabid: "purchase-purchase",
 						text: "购货单",
-						url: "../scm/invPu?action=editPur&id=" + c
+						url: "/views/scm/invPu.html?action=editPur&id=" + c
 					})
 				}
 			},

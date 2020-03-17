@@ -54,8 +54,8 @@ define(["jquery", "print"], function(a, b, c) {
 			else {
 				var b = k("#customer").prev().text().slice(0, -1),
 					c = "选择" + b;
-				if ("供应商" === b || "购货单位" === b) var d = "url:../settings/select_customer?type=10&multiselect=false";
-				else var d = "url:../settings/select_customer?multiselect=false";
+				if ("供应商" === b || "购货单位" === b) var d = "url:/views/settings/select-customer.html?type=10&multiselect=false";
+				else var d = "url:/views/settings/select-customer.html?multiselect=false";
 				this.customerDialog = k.dialog({
 					width: 775,
 					height: 510,

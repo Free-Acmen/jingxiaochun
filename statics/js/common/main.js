@@ -1,6 +1,7 @@
 var Public = Public || {};
 var Business = Business || {};
 Public.isIE6 = !window.XMLHttpRequest;	//ie6
+Public.WDURL = 'http://localhost:5000';
 
 define(["jquery", "plugins", "grid", "dialog", "datepicker"], function(require, exports){
 	var $ = require("jquery");
@@ -2277,9 +2278,9 @@ define(["jquery", "plugins", "grid", "dialog", "datepicker"], function(require, 
 				var lable = $('#customer').prev().text().slice(0, -1);
 				var title = '选择' + lable;
 				if(lable === '供应商' || lable === '购货单位') {
-					var content = 'url:../settings/select_customer?type=10';
+					var content = 'url:/views/settings/select-customer.html?type=10';
 				} else {
-					var content = 'url:../settings/select_customer';
+					var content = 'url:/views/settings/select-customer.html';
 				}
 				_self.customerDialog = $.dialog({
 					width: 775,
@@ -2313,7 +2314,7 @@ define(["jquery", "plugins", "grid", "dialog", "datepicker"], function(require, 
 						width: 775,
 						height: 510,
 						title: '选择商品',
-						content: 'url:../settings/goods_batch',
+						content: 'url:/views/settings/goods-batch.html',
 						data: {
 							skuMult: skuMult,
 							skey:_self.skey,
@@ -2553,7 +2554,7 @@ define(["jquery", "plugins", "grid", "dialog", "datepicker"], function(require, 
 				width: 570,
 				height: 500,
 				title: '选择客户',
-				content: 'url:../settings/customer_batch',
+				content: 'url:/views/settings/customer-batch.html',
 				data:{isDelete:2},
 				lock: true,
 				ok: function(){
@@ -2594,7 +2595,7 @@ define(["jquery", "plugins", "grid", "dialog", "datepicker"], function(require, 
 				width: 570,
 				height: 500,
 				title: '选择供应商',
-				content: 'url:../settings/supplier_batch',
+				content: 'url:/views/settings/supplier-batch.html',
 				data:{isDelete:2},
 				lock: true,
 				ok: function(){
@@ -2635,7 +2636,7 @@ define(["jquery", "plugins", "grid", "dialog", "datepicker"], function(require, 
 				width: 470,
 				height: 500,
 				title: '选择结算账户',
-				content: 'url:../settings/settlementAccount_batch',
+				content: 'url:/views/settings/settlementAccount-batch.html',
 				data:{isDelete:2},
 				lock: true,
 				ok: function(){
@@ -2671,7 +2672,7 @@ define(["jquery", "plugins", "grid", "dialog", "datepicker"], function(require, 
 				width: 775,
 				height: 500,
 				title: '选择商品',
-				content: 'url:../settings/goods_batch',
+				content: 'url:/views/settings/goods-batch.html',
 				data:{
 					isDelete:2//获取全部商品要传2。。。
 				},
@@ -2713,7 +2714,7 @@ define(["jquery", "plugins", "grid", "dialog", "datepicker"], function(require, 
 				width: 510,
 				height: 500,
 				title: '选择仓库',
-				content: 'url:../settings/storage_batch',
+				content: 'url:/views/settings/storage-batch.html',
 				data:{isDelete:2},
 				lock: true,
 				ok: function(){
@@ -2753,7 +2754,7 @@ define(["jquery", "plugins", "grid", "dialog", "datepicker"], function(require, 
 				width: 510,
 				height: 500,
 				title: '选择销售员',
-				content: 'url:../settings/saler_batch',
+				content: 'url:/views/settings/saler-batch.html',
 				data:{isDelete:2},
 				lock: true,
 				ok: function(){
@@ -2906,7 +2907,7 @@ define(["jquery", "plugins", "grid", "dialog", "datepicker"], function(require, 
 		};
 		$.dialog({
 			title: opt.title,
-			content : 'url:../prints/print_settings_voucher',
+			content : 'url:/views/prints/print-settings-voucher.html',
 			data: {taodaData: data, pdfData: data, pdfUrl: pdfUrl, billType:billType ,opt:opt},
 			width: 520,
 			height: 400,
