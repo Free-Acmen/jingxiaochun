@@ -906,7 +906,7 @@ Business.customerCombo = function($_obj, opts){
 		};
 		$.dialog({
 			title : '新增客户',
-			content : 'url:../settings/customer_manage',
+			content : 'url:/views/settings/customer-manage.html',
 			data: {oper: 'add', callback: function(data, oper, dialogWin){
 				//parent.getCustomer();
 				//_self.customerCombo.selectByValue(data.id, false);

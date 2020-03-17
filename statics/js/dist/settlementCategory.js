@@ -1,17 +1,20 @@
 function initEvent() {
 	$("#btn-add").click(function(a) {
 		a.preventDefault(), handle.operate("add")
-	}), $("#grid").on("click", ".operating .ui-icon-pencil", function(a) {
+  }), 
+  $("#grid").on("click", ".operating .ui-icon-pencil", function(a) {
 		a.preventDefault();
 		var b = $(this).parent().data("id");
 		handle.operate("edit", b)
-	}), $("#grid").on("click", ".operating .ui-icon-trash", function(a) {
+  }), 
+  $("#grid").on("click", ".operating .ui-icon-trash", function(a) {
 		a.preventDefault();
 		var b = $(this).parent().data("id");
 		handle.del(b)
-	}), $("#btn-refresh").click(function(a) {
+  }), 
+  $("#btn-refresh").click(function(a) {
 		a.preventDefault(), $("#grid").jqGrid("setGridParam", {
-			url: "../basedata/assist?action=list&typeNumber=PayMethod&isDelete=2",
+			url: Public.WDURL + "/basedata/assist?action=list&typeNumber=PayMethod&isDelete=2",
 			datatype: "json"
 		}).trigger("reloadGrid")
 	}), $(window).resize(function() {
@@ -32,7 +35,7 @@ function initGrid() {
 			width: 200
 		}];
 	$("#grid").jqGrid({
-		url: "../basedata/assist?action=list&typeNumber=PayMethod&isDelete=2",
+		url: Public.WDURL + "/basedata/assist?action=list&typeNumber=PayMethod&isDelete=2",
 		datatype: "json",
 		height: Public.setGrid().h,
 		altRows: !0,
@@ -114,7 +117,7 @@ var handle = {
 	},
 	del: function(a) {
 		Business.verifyRight("Assist_DELETE") && $.dialog.confirm("删除的结算方式将不能恢复，请确认是否删除？", function() {
-			Public.ajaxPost("../basedata/assist/delete?action=delete&typeNumber=customertype", {
+			Public.ajaxPost(Public.WDURL + "/basedata/assist/delete?action=delete&typeNumber=customertype", {
 				id: a
 			}, function(b) {
 				b && 200 == b.status ? (parent.Public.tips({

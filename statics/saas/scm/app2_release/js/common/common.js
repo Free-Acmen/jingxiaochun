@@ -903,7 +903,7 @@ Business.customerCombo = function($_obj, opts){
 		};
 		$.dialog({
 			title : '新增客户',
-			content : 'url:../settings/customer_manage',
+			content : 'url:/views/settings/customer-manage.html',
 			data: {oper: 'add', callback: function(data, oper, dialogWin){
 				//parent.getCustomer();
 				//_self.customerCombo.selectByValue(data.id, false);
@@ -1033,7 +1033,7 @@ Business.salesCombo = function($_obj, opts){
 		};
 		$.dialog({
 			title : '新增职员',
-			content : 'url:../settings/staff_manage',
+			content : 'url:/views/settings/staff-manage.html',
 			data: {oper: 'add', callback: function(data, oper, dialogWin){
 				//parent.getCustomer();
 				//_self.customerCombo.selectByValue(data.id, false);
@@ -1834,7 +1834,7 @@ Business.goodsCombo = function($_obj, opts){
 		_h = defaultPage.SYSTEM.ISSERNUM?_h + 40:_h;
 		$.dialog({
 			title : '新增商品',
-			content : 'url:../settings/goods_manage',
+			content : 'url:/views/settings/goods-manage.html',
 			data: {oper: 'add', callback: function(data, oper, dialogWin){
 				var goodID = data.id;
 				//_self.goodsCombo.getAllRawData().push(data);

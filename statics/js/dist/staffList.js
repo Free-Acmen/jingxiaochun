@@ -1,3 +1,7 @@
+/**
+ * 职员管理页面js
+ * */ 
+
 function initEvent() {
 	$("#btn-add").click(function(a) {
 		a.preventDefault(), Business.verifyRight("INVLOCTION_ADD") && handle.operate("add")
@@ -67,7 +71,7 @@ function initGrid() {
 			align: "center"
 		}];
 	$("#grid").jqGrid({
-		url: "../basedata/employee?action=list&isDelete=2",
+		url: Public.WDURL + "/basedata/employee?action=list&isDelete=2",
 		datatype: "json",
 		height: Public.setGrid().h,
 		altRows: !0,
@@ -135,7 +139,7 @@ var handle = {
 			};
 		$.dialog({
 			title: c,
-			content: "url:staff_manage",
+			content: "url:/views/settings/staff-manage.html",
 			data: d,
 			width: 400,
 			height: 160,
@@ -146,7 +150,7 @@ var handle = {
 		})
 	},
 	setStatus: function(a, b) {
-		a && Public.ajaxPost("../basedata/employee/disable?action=disable", {
+		a && Public.ajaxPost(Public.WDURL + "/basedata/employee/disable?action=disable", {
 			employeeIds: a,
 			disable: Number(b)
 		}, function(c) {
@@ -164,7 +168,7 @@ var handle = {
 	},
 	del: function(a) {
 		$.dialog.confirm("删除的职员将不能恢复，请确认是否删除？", function() {
-			Public.ajaxPost("../basedata/employee/delete?action=delete", {
+			Public.ajaxPost(Public.WDURL +"/basedata/employee/delete?action=delete", {
 				id: a
 			}, function(b) {
 				b && 200 == b.status ? (parent.Public.tips({

@@ -68,7 +68,7 @@ function initGrid() {
 		}];
 	$("#grid").jqGrid({
 		//url: "../basedata/invlocation.do?action=list&isDelete=2",
-		url: "../basedata/invlocation?action=list&isDelete=2",
+		url: Public.WDURL + "/basedata/invlocation?action=list&isDelete=2",
 		datatype: "json",
 		height: Public.setGrid().h,
 		altRows: !0,
@@ -140,7 +140,7 @@ var handle = {
 		$.dialog({
 			title: c,
 			//content: "url:storage-manage.jsp",
-			content: "url:storage_manage",
+			content: "url:/views/settings/storage-manage.html",
 			data: d,
 			width: 400,
 			height: 160,
@@ -156,7 +156,7 @@ var handle = {
 	},
 	del: function(a) {
 		$.dialog.confirm("删除的仓库将不能恢复，请确认是否删除？", function() {
-			Public.ajaxPost("../basedata/invlocation/delete", {
+			Public.ajaxPost(Public.WDURL + "/basedata/invlocation/delete", {
 				locationId: a
 			}, function(b) {
 				b && 200 == b.status ? (parent.Public.tips({
@@ -169,7 +169,7 @@ var handle = {
 		})
 	},
 	setStatus: function(a, b) {
-		a && Public.ajaxPost("../basedata/invlocation/disable", {
+		a && Public.ajaxPost(Public.WDURL + "/basedata/invlocation/disable", {
 			locationId: a,
 			disable: Number(b)
 		}, function(c) {
@@ -182,7 +182,7 @@ var handle = {
 		})
 	},
 	setStatuses: function(a, b) {
-		a && 0 != a.length && Public.ajaxPost("../basedata/invlocation/disable", {
+		a && 0 != a.length && Public.ajaxPost(Public.WDURL + "/basedata/invlocation/disable", {
 			locationIds: JSON.stringify(a),
 			disable: Number(b)
 		}, function(c) {

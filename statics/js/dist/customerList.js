@@ -124,7 +124,7 @@ $(function() {
 				formatter: d
 			}];
 		h.gridReg("grid", c), c = h.conf.grids.grid.colModel, $("#grid").jqGrid({
-			url: "../basedata/contact?action=list&isDelete=2",
+			url: Public.WDURL + "/basedata/contact?action=list&isDelete=2",
 			datatype: "json",
 			autowidth: !0,
 			height: a.h,
@@ -222,7 +222,7 @@ $(function() {
 		}), $("#btn-export").on("click", function(a) {
 			if (Business.verifyRight("BU_EXPORT")) {
 				var b = "输入客户编号/ 名称/ 联系人/ 电话查询" === $_matchCon.val() ? "" : $.trim($_matchCon.val());
-				$(this).attr("href", "../basedata/customer/exporter?action=exporter&isDelete=2&skey=" + b)
+				$(this).attr("href", Public.WDURL+"/basedata/customer/exporter?action=exporter&isDelete=2&skey=" + b)
 			}
 		}), $("#grid").on("click", ".operating .ui-icon-pencil", function(a) {
 			if (a.preventDefault(), Business.verifyRight("BU_UPDATE")) {
@@ -287,7 +287,7 @@ $(function() {
 					};
 				$.dialog({
 					title: c,
-					content: "url:customer_manage",
+					content: "url:/views/settings/customer-manage.html",
 					data: d,
 					width: 640,
 					height: 466,
@@ -299,7 +299,7 @@ $(function() {
 			},
 			del: function(a) {
 				$.dialog.confirm("删除的客户将不能恢复，请确认是否删除？", function() {
-					Public.ajaxPost("../basedata/contact/delete?action=delete", {
+					Public.ajaxPost(Public.WDURL + "/basedata/contact/delete?action=delete", {
 						id: a
 					}, function(b) {
 						if (b && 200 == b.status) {
@@ -319,7 +319,7 @@ $(function() {
 				})
 			},
 			setStatus: function(a, b) {
-				a && Public.ajaxPost("../basedata/contact/disable?action=disable", {
+				a && Public.ajaxPost(Public.WDURL + "/basedata/contact/disable?action=disable", {
 					contactIds: a,
 					disable: Number(b)
 				}, function(c) {
@@ -335,7 +335,7 @@ $(function() {
 				if (a && 0 != a.length) {
 					var c = $("#grid").jqGrid("getGridParam", "selarrrow"),
 						d = c.join();
-					Public.ajaxPost("../basedata/contact/disable?action=disable", {
+					Public.ajaxPost(Public.WDURL + "/basedata/contact/disable?action=disable", {
 						contactIds: d,
 						disable: Number(b)
 					}, function(c) {

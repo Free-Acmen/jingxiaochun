@@ -41,7 +41,7 @@ function(a) {
 			type: "POST",
 			dataType: "json",
 			success: function(c) {
-				a("#registerForm").data("onPost", !1), 200 == c.status ? window.location.href = "authority_setting?userName=" + b.userNumber + "&right=0" : Public.tips({
+				a("#registerForm").data("onPost", !1), 200 == c.status ? window.location.href = "/views/settings/authority-setting.html?userName=" + b.userNumber + "&right=0" : Public.tips({
 					type: 1,
 					content: c.msg
 				})

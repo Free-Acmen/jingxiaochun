@@ -286,7 +286,7 @@ $(function() {
 					};
 				$.dialog({
 					title: c,
-					content: "url:customer_manage_s",
+					content: "url:/views/settings/customer-manage-s.html",
 					data: d,
 					width: 640,
 					height: 466,

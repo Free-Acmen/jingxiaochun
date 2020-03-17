@@ -436,7 +436,7 @@ var dataReflush, list = {
   },
   vendorList: {
       name: "供应商管理",
-      href: "../settings/vendor-list",
+      href: "./settings/vendor-list.html",
       dataRight: "PUR_QUERY",
       target: "setting-base"
   },
@@ -517,7 +517,7 @@ serialnoList: {
   },
   settlementCL: {
       name: "结算方式",
-      href: "./settings/settlement_category_list.html",
+      href: "./settings/settlement-category-list.html",
       dataRight: "Assist_QUERY",
       target: "setting-auxiliary"
   },
@@ -529,7 +529,7 @@ serialnoList: {
   },
   parameter: {
       name: "系统参数",
-      href: "./settings/system_parameter.html",
+      href: "./settings/system-parameter.html",
       dataRight: "PARAMETER",
       target: "setting-advancedSetting"
   },

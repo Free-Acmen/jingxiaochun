@@ -65,7 +65,7 @@ $(document).keydown(function(event) {
 <script>
 function validMaxForShare(){
     $.ajax({
-      url: '../right/isMaxShareUser?action=isMaxShareUser',
+      url: Public.WDURL + '/right/isMaxShareUser?action=isMaxShareUser',
       dataType: 'json',
       type: 'POST',
       success: function(data){
@@ -77,7 +77,7 @@ function validMaxForShare(){
         		return false;
         	}else
         	{
-        		window.location.href='../settings/authority_new';
+        		window.location.href='/views/settings/authority-new.html';
         	}	
         }
       }
@@ -108,7 +108,7 @@ function validMaxForShare(){
       var userName = rowData.userName;
       e.preventDefault();
       $.ajax({
-        url: '../right/auth2UserCancel?action=auth2UserCancel&userName=' + userName,
+        url: Public.WDURL +'/right/auth2UserCancel?action=auth2UserCancel&userName=' + userName,
         type: 'POST',
         dataType: 'json',
         success: function(data){
@@ -142,7 +142,7 @@ function validMaxForShare(){
        $.ajax({
         type: 'POST',
         dataType: 'json',
-        url: '../right/auth2User?action=auth2User&userName=' + userName,
+        url: Public.WDURL + '/right/auth2User?action=auth2User&userName=' + userName,
         success: function(data){
           if (data.status == 200) {
             parent.Public.tips({content : '授权成功！'});
@@ -165,7 +165,7 @@ function validMaxForShare(){
    
     function initGrid(){
       $('#grid').jqGrid({
-        url: '../right/queryAllUser?action=queryAllUser',
+        url: Public.WDURL +'/right/queryAllUser?action=queryAllUser',
         datatype: 'json',
         height: Public.setGrid().h,
         colNames:['用户', '真实姓名', '公司','功能授权','数据授权','启用授权','重置密码'],
@@ -174,15 +174,18 @@ function validMaxForShare(){
           {name:'realName', index:'realName', width:200},
           {name:'isCom', index:'isCom', hidden: true},
           {name:'setting', index:'setting', width:100, align:"center", title:false, formatter: settingFormatter},
-		  //{name:'setting_data', index:'setting_data', width:100, align:"center", title:false, formatter: settingDataFormatter},
-		  {name:'setting_data', index:'setting_data', width:100, align:"center", title:false, formatter: settingDataFormatter},
-		  //{name:'setting_data', index:'setting_data', width:100, align:"center", title:false, formatter: settingDataFormatter, hidden:(parent.SYSTEM.siType == 1)},
-		  {name:'share', index:'share', width:100, align:"center", title:false, formatter: shareFormatter},
-		  {name:'reset',index:'reset',width:100,align:"center",title:false,
-			hidden:<?php $s=$this->session->userdata('jxcsys');echo ($s['roleid'] != 0 ? 'true' : 'false') ?>,
-			  formatter:function(a,b,c){return '<span class="set-status ui-label ui-label-success" onclick="resetPwd(' + c.userId + ')">重置</span>'}
-		  }
-
+		      {name:'setting_data', index:'setting_data', width:100, align:"center", title:false, formatter: settingDataFormatter},
+		      {name:'share', index:'share', width:100, align:"center", title:false, formatter: shareFormatter},
+		      {
+            name:'reset',
+            index:'reset',
+            width:100,
+            align:"center",
+            title:false,
+			      hidden:false, //<?php $s=$this->session->userdata('jxcsys');echo ($s['roleid'] != 0 ? 'true' : 'false') ?>
+			      formatter:function(a,b,c){
+              return '<span class="set-status ui-label ui-label-success" onclick="resetPwd(' + c.userId + ')">重置</span>'}
+		        }
         ],
         altRows:true,
         gridview: true,
@@ -241,14 +244,14 @@ function validMaxForShare(){
 		if (row.admin || row.share === false) {
 			return '&nbsp;';
 		} else {
-			return '<div class="operating" data-id="' + row.userId + '"><a class="ui-icon ui-icon-pencil" title="详细设置授权信息" href="../settings/authority_setting?userName=' + row.userName + '"></a></div>';
+			return '<div class="operating" data-id="' + row.userId + '"><a class="ui-icon ui-icon-pencil" title="详细设置授权信息" href="/views/settings/authority-setting.html?userName=' + row.userName + '"></a></div>';
 		}
     };
     function settingDataFormatter(val, opt, row) {
 		if (row.admin || row.share === false) {
 			return '&nbsp;';
 		} else {
-			return '<div class="operating" data-id="' + row.userId + '"><a class="ui-icon ui-icon-pencil" title="详细设置授权信息" href="../settings/authority_setting_data?userName=' + row.userName + '"></a></div>';
+			return '<div class="operating" data-id="' + row.userId + '"><a class="ui-icon ui-icon-pencil" title="详细设置授权信息" href="/views/settings/authority-setting-data.html?userName=' + row.userName + '"></a></div>';
 		}
     };
 	
@@ -305,7 +308,7 @@ function validMaxForShare(){
 				data.password = password;
 				data.password2 = password2;
 				data.userId = userId;
-				Public.ajaxPost("../home/set_password2", data, function(a) {
+				Public.ajaxPost(Public.WDURL + "/home/set_password2", data, function(a) {
 					200 == a.status ? (parent.parent.Public.tips({
 						content: "操作成功！"
 					})) : parent.parent.Public.tips({

@@ -212,7 +212,7 @@ $(function() {
 				formatter: i.statusFmatter
 			}];
 		j.gridReg("grid", l), l = j.conf.grids.grid.colModel, $("#grid").jqGrid({
-			url: "../basedata/inventory?action=list&isDelete=2",
+			url: Public.WDURL +"/basedata/inventory?action=list&isDelete=2",
 			datatype: "json",
 			width: a.w,
 			height: a.h,
@@ -305,7 +305,7 @@ $(function() {
 			if (Business.verifyRight("INVENTORY_EXPORT")) {
 				var b = "按商品编号，商品名称，规格型号等查询" === $_matchCon.val() ? "" : $.trim($_matchCon.val()),
 					c = $("#currentCategory").data("id") || "";
-				$(this).attr("href", "../basedata/inventory/exporter?action=exporter&isDelete=2&skey=" + b + "&assistId=" + c)
+				$(this).attr("href", Public.WDURL + "/basedata/inventory/exporter?action=exporter&isDelete=2&skey=" + b + "&assistId=" + c)
 			}
 		}), $("#grid").on("click", ".operating .ui-icon-pencil", function(a) {
 			if (a.preventDefault(), Business.verifyRight("INVENTORY_UPDATE")) {
@@ -322,7 +322,7 @@ $(function() {
 			var b = $(this).parent().data("id"),
 				c = "商品图片";
 			$.dialog({
-				content: "url:../settings/fileUpload",
+				content: "url:/views/settings/fileUpload.html",
 				data: {
 					title: c,
 					id: b,
@@ -393,7 +393,7 @@ $(function() {
 				var e = 768;
 				_h = 480, $.dialog({
 					title: c,
-					content: "url:goods_manage",
+					content: "url:/views/settings/goods-manage.html",
 					data: d,
 					width: e,
 					height: 430,
@@ -405,7 +405,7 @@ $(function() {
 			},
 			del: function(a) {
 				$.dialog.confirm("删除的商品将不能恢复，请确认是否删除？", function() {
-					Public.ajaxPost("../basedata/inventory/delete?action=delete", {
+					Public.ajaxPost(Public.WDURL + "/basedata/inventory/delete?action=delete", {
 						id: a
 					}, function(b) {
 						if (b && 200 == b.status) {
@@ -426,7 +426,7 @@ $(function() {
 				})
 			},
 			setStatus: function(a, b) {
-				a && Public.ajaxPost("../basedata/inventory/disable?action=disable", {
+				a && Public.ajaxPost(Public.WDURL +"/basedata/inventory/disable?action=disable", {
 					invIds: a,
 					disable: Number(b)
 				}, function(c) {
@@ -442,7 +442,7 @@ $(function() {
 				if (a && 0 != a.length) {
 					var c = $("#grid").jqGrid("getGridParam", "selarrrow"),
 						d = c.join();
-					Public.ajaxPost("../basedata/inventory/disable?action=disable", {
+					Public.ajaxPost(Public.WDURL +"/basedata/inventory/disable?action=disable", {
 						invIds: d,
 						disable: Number(b)
 					}, function(c) {

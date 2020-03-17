@@ -9,7 +9,7 @@ function setpirce()
 
 
 function init() {
-	SYSTEM.ISSERNUM || SYSTEM.enableAssistingProp || SYSTEM.ISWARRANTY || $("#tab").find(".tabItem:eq(2)").hide(), void 0 !== cRowId ? Public.ajaxPost("../basedata/inventory/query?action=query", {
+	SYSTEM.ISSERNUM || SYSTEM.enableAssistingProp || SYSTEM.ISWARRANTY || $("#tab").find(".tabItem:eq(2)").hide(), void 0 !== cRowId ? Public.ajaxPost(Public.WDURL + "/basedata/inventory/query?action=query", {
 		id: cRowId
 	}, function(a) {
 		200 === a.status ? (rowData = a.data, initField(), initSkuGrid(rowData.invSkus), initGrid(rowData.propertys), initCombo(), initEvent(),initCombinationGrid(rowData.sonGoods)) : parent.parent.Public.tips({
@@ -36,7 +36,7 @@ function postCustomerData() {
 	if ("add" == oper) {
 		cancleGridEdit();
 		var a = $("#name").val();
-		Public.ajaxPost("../basedata/inventory/checkName?action=checkName", {
+		Public.ajaxPost(Public.WDURL +"/basedata/inventory/checkName?action=checkName", {
 			name: a
 		}, function(b) {
 			-1 == b.status ? $.dialog.confirm('商品名称 "' + a + '" 已经存在！是否继续？', function() {
@@ -53,7 +53,7 @@ function postData() {
 		c.skuAssistId = b.skuAssistId, c.skuClassId = 0, $itemList.find("input:checkbox").each(function() {
 			var a = $(this).parent().text();
 			this.checked && (c.skuName = c.skuName ? c.skuName + "+" + a : a)
-		}), Public.ajaxPost("../basedata/inventory/" + ("add" == oper ? "add" : "update"), b, function(d) {
+		}), Public.ajaxPost(Public.WDURL +"/basedata/inventory/" + ("add" == oper ? "add" : "update"), b, function(d) {
 			if (200 == d.status) {
 				if (parent.parent.Public.tips({
 					content: a + "成功！"
@@ -501,7 +501,7 @@ function initEvent() {
 	};
 	categoryTree = Public.categoryTree($category, b), $("#specs").blur(function() {
 		var a = $.trim(this.value);
-		"" == a || "edit" == oper && a == rowData.spec || Public.ajaxPost("../basedata/inventory/checkSpec?action=checkSpec", {
+		"" == a || "edit" == oper && a == rowData.spec || Public.ajaxPost(Public.WDURL +"/basedata/inventory/checkSpec?action=checkSpec", {
 			spec: a
 		}, function(b) {
 			-1 == b.status && parent.parent.Public.tips({
@@ -554,7 +554,7 @@ function initEvent() {
 		if (Business.verifyRight("FZSX_ADD")) {
 			var b = function() {
 					var a = $.trim($("#assistingName").val());
-					a && Public.ajaxPost("../basedata/assistType/add?action=add", {
+					a && Public.ajaxPost(Public.WDURL + "/basedata/assistType/add?action=add", {
 						name: a
 					}, function(a) {
 						200 == a.status ? (defaultPage.Public.tips({
@@ -647,7 +647,7 @@ function initEvent() {
 		var b = $(this).closest("tr")[0].id,
 			c = $("#gridSku").jqGrid("getRowData", b);
 		if (c && c.skuId && "edit" == oper) $.dialog.confirm("删除的分录将不能恢复，请确认是否删除？", function() {
-			Public.ajaxPost("../basedata/inventory/deleteSku?action=deleteSku", {
+			Public.ajaxPost(Public.WDURL + "/basedata/inventory/deleteSku?action=deleteSku", {
 				invId: rowData.id,
 				skuId: c.skuId
 			}, function(a) {
@@ -773,11 +773,11 @@ function initEvent() {
 function addStorage(a) {
 	parent.$.dialog({
 		title: "新增仓库",
-		content: "url:../settings/storage_manage",
+		content: "url:/views/settings/storage-manage.html",
 		data: {
 			oper: "add",
 			callback: function(a, b, c) {
-				Public.ajaxPost("../basedata/invlocation?action=list", {}, function(b) {
+				Public.ajaxPost(Public.WDURL +"/basedata/invlocation?action=list", {}, function(b) {
 					if (b && 200 == b.status) {
 						var c = b.data.rows;
 						parent.parent.SYSTEM.storageInfo = c
@@ -802,7 +802,7 @@ function addStorage(a) {
 function addUnit() {
 	parent.$.dialog({
 		title: "新增计量单位",
-		content: "url:../settings/unit_manage",
+		content: "url:/views/settings/unit-manage.html",
 		data: {
 			oper: "add",
 			callback: function(a, b, c) {
@@ -1589,7 +1589,7 @@ function initValidator() {
 				var c = $(a).val();
 				return $.ajax({
 					type: "POST",
-					url: "../basedata/inventory/checkBarCode?action=checkBarCode",
+					url: Public.WDURL + "/basedata/inventory/checkBarCode?action=checkBarCode",
 					data: {
 						barCode: c
 					},
@@ -1605,7 +1605,7 @@ function initValidator() {
 			},
 			myRemote: function(a, b, c) {
 				return c.old.value === a.value || $(a).data("tip") === !1 && a.value.length > 1 ? !0 : $.ajax({
-					url: "../basedata/inventory/getNextNo?action=getNextNo",
+					url: Public.WDURL +"/basedata/inventory/getNextNo?action=getNextNo",
 					type: "post",
 					data: "skey=" + a.value,
 					dataType: "json",
@@ -1748,7 +1748,7 @@ var curRow, curCol, curArrears, api = frameElement.api,
 					for (var b = [], c = 0, d = defaultPage.SYSTEM.assistPropInfo.length; d > c; c++) defaultPage.SYSTEM.assistPropInfo[c].typeNumber === a && b.push(defaultPage.SYSTEM.assistPropInfo[c]);
 					return b
 				}
-				return "../basedata/assist?action=list&isDelete=2&typeNumber=" + a
+				return Public.WDURL +"/basedata/assist?action=list&isDelete=2&typeNumber=" + a
 			},
 			formatter: {
 				skuPropFrm: function(a, b, c) {

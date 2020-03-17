@@ -102,7 +102,7 @@ $(function() {
 				formatter: g.statusFmatter
 			}];
 		h.gridReg("grid", d), d = h.conf.grids.grid.colModel, $("#grid").jqGrid({
-			url: "../basedata/contact?type=10&action=list&isDelete=2",
+			url: Public.WDURL + "/basedata/contact?type=10&action=list&isDelete=2",
 			datatype: "json",
 			autowidth: !0,
 			height: a.h,
@@ -203,7 +203,7 @@ $(function() {
 		}), $("#btn-export").on("click", function(a) {
 			if (Business.verifyRight("PUR_EXPORT")) {
 				var b = $_matchCon.val() === $_matchCon[0].defaultValue ? "" : $.trim($_matchCon.val());
-				$(this).attr("href", "../basedata/supplier/exporter?action=exporter&isDelete=2&skey=" + b)
+				$(this).attr("href", Public.WDURL + "/basedata/supplier/exporter?action=exporter&isDelete=2&skey=" + b)
 			}
 		}), $("#grid").on("click", ".operating .ui-icon-pencil", function(a) {
 			if (a.preventDefault(), Business.verifyRight("PUR_UPDATE")) {
@@ -263,7 +263,7 @@ $(function() {
 					};
 				$.dialog({
 					title: c,
-					content: "url:vendor_manage",
+					content: "url:/views/settings/vendor-manage.html",
 					data: d,
 					width: 640,
 					height: 442,
@@ -275,7 +275,7 @@ $(function() {
 			},
 			del: function(a) {
 				$.dialog.confirm("删除的供应商将不能恢复，请确认是否删除？", function() {
-					Public.ajaxPost("../basedata/contact/delete?type=10&action=delete", {
+					Public.ajaxPost(Public.WDURL +"/basedata/contact/delete?type=10&action=delete", {
 						id: a
 					}, function(b) {
 						if (b && 200 == b.status) {
@@ -296,7 +296,7 @@ $(function() {
 				})
 			},
 			setStatus: function(a, b) {
-				a && Public.ajaxPost("../basedata/contact/disable?action=disable", {
+				a && Public.ajaxPost(Public.WDURL +"/basedata/contact/disable?action=disable", {
 					contactIds: a,
 					disable: Number(b)
 				}, function(c) {
@@ -312,7 +312,7 @@ $(function() {
 				if (a && 0 != a.length) {
 					var c = $("#grid").jqGrid("getGridParam", "selarrrow"),
 						d = c.join();
-					Public.ajaxPost("../basedata/contact.do?action=disable", {
+					Public.ajaxPost(Public.WDURL +"/basedata/contact.do?action=disable", {
 						contactIds: d,
 						disable: Number(b)
 					}, function(c) {

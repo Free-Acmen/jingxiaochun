@@ -89,7 +89,7 @@ function validMaxForShare(){
       var userName = rowData.userName;
       e.preventDefault();
       $.ajax({
-        url: '../right/auth2UserCancel?action=auth2UserCancel&userName=' + userName,
+        url: Public.WDURL + '/right/auth2UserCancel?action=auth2UserCancel&userName=' + userName,
         type: 'POST',
         dataType: 'json',
         success: function(data){
@@ -123,7 +123,7 @@ function validMaxForShare(){
        $.ajax({
         type: 'POST',
         dataType: 'json',
-        url: '../right/auth2User?action=auth2User&userName=' + userName,
+        url: Public.WDURL + '/right/auth2User?action=auth2User&userName=' + userName,
         success: function(data){
           if (data.status == 200) {
             parent.Public.tips({content : '授权成功！'});
@@ -146,7 +146,7 @@ function validMaxForShare(){
    
     function initGrid(){
       $('#grid').jqGrid({
-        url: '../noteprinttemp/findNotePrintTemp?action=queryAllUser',
+        url: Public.WDURL + '/noteprinttemp/findNotePrintTemp?action=queryAllUser',
         datatype: 'json',
         height: Public.setGrid().h,
         colNames:['操作','名称', '类别', '模板类型','是否默认'],
@@ -218,7 +218,7 @@ function validMaxForShare(){
 		if (row.admin || row.share === false) {
 			return '&nbsp;';
 		} else {
-			return '<div class="operating" data-id="' + row.userId + '"><a class="ui-icon ui-icon-pencil" title="详细设置授权信息" href="../settings/authority_setting?userName=' + row.userName + '"></a></div>';
+			return '<div class="operating" data-id="' + row.userId + '"><a class="ui-icon ui-icon-pencil" title="详细设置授权信息" href="/views/settings/authority-setting.html?userName=' + row.userName + '"></a></div>';
 		}
     };
     function edit(val, opt, row) {

@@ -24,7 +24,7 @@
 	c.append(d.join(""));
 	var g = $("#assisting-category-select li[data-id=" + typeNumber + "]");
 	1 == g.length ? (g.addClass("cur"), b = 0) : (b = ["number", typeNumber], $("#custom-assisting").parent().addClass("cur")), a(typeNumber, e[typeNumber], !0), $("#custom-assisting").combo({
-		data: "../basedata/assist/getAssistType?action=getAssistType",
+		data: Public.WDURL +"/basedata/assist/getAssistType?action=getAssistType",
 		text: "name",
 		value: "number",
 		width: 170,
@@ -273,7 +273,7 @@ function postData(a) {
 		
 	},
 		g = "add" == d ? "新增" + conditions.name + "类别" : "修改" + conditions.name + "类别";
-	f.typeNumber = conditions.typeNumber, Public.ajaxPost("../basedata/assist/" + d, f, function(a) {
+	f.typeNumber = conditions.typeNumber, Public.ajaxPost(Public.WDURL +"/basedata/assist/" + d, f, function(a) {
 		200 == a.status ? (parent.parent.Public.tips({
 			content: g + "成功！"
 		}), handle.callback(a.data, d)) : parent.parent.Public.tips({
@@ -302,7 +302,7 @@ function verifyRight(a) {
 	}
 	return Business.verifyRight(b += a)
 }
-var typeNumber, showParentCategory, showCode, url = "../basedata/assist?action=list&isDelete=2",
+var typeNumber, showParentCategory, showCode, url = Public.WDURL +"/basedata/assist?action=list&isDelete=2",
 	urlParam = Public.urlParam();
 urlParam.typeNumber && (typeNumber = urlParam.typeNumber);
 var conditions = {
@@ -442,7 +442,7 @@ var conditions = {
 		},
 		del: function(a) {
 			$.dialog.confirm("删除的" + conditions.name + "类别将不能恢复，请确认是否删除？", function() {
-				Public.ajaxPost("../basedata/assist/delete?action=delete", {
+				Public.ajaxPost(Public.WDURL +"/basedata/assist/delete?action=delete", {
 					id: a,
 					typeNumber: conditions.typeNumber
 				}, function(b) {

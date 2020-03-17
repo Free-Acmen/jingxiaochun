@@ -1,3 +1,7 @@
+/**
+ * 账户管理页面js
+ * */ 
+
 $(function() {
 	function a() {
 		c.jqGrid({
@@ -47,7 +51,7 @@ $(function() {
 					return b
 				}
 			}],
-			url: "../basedata/settAcct?action=list",
+			url: Public.WDURL + "/basedata/settAcct?action=list",
 			datatype: "json",
 			height: Public.setGrid().h,
 			altRows: !0,
@@ -81,7 +85,7 @@ $(function() {
 					$("#grid").data("gridData", b), 0 == a.items.length && parent.Public.tips({
 						type: 2,
 						content: "没有账户数据！"
-					}), Public.ajaxPost("../basedata/settAcct/findAmountOver?action=findAmountOver", {
+					}), Public.ajaxPost(Public.WDURL + "/basedata/settAcct/findAmountOver?action=findAmountOver", {
 						ids: c
 					}, function(a) {
 						if (a && 200 == a.status) for (var b = 0; b < a.data.items.length; b++) {
@@ -129,12 +133,12 @@ $(function() {
 					this.pop("新增结算账户", {
 						oper: a,
 						callback: this.callback
-					}, "url:settlementAccount_manager");
+					}, "url:/views/settings/settlementAccount-manager.html");
 					break;
 				case "edit":
 					if (!Business.verifyRight("SettAcct_UPDATE")) return;
 					var d = this;
-					Public.ajaxPost("../basedata/settAcct/query?action=query", {
+					Public.ajaxPost(Public.WDURL + "/basedata/settAcct/query?action=query", {
 						id: b
 					}, function(b) {
 						return 200 != b.status ? void parent.parent.Public.tips({
@@ -144,13 +148,13 @@ $(function() {
 							oper: a,
 							rowData: b.data,
 							callback: d.callback
-						}, "url:settlementAccount_manager")
+						}, "url:/views/settings/settlementAccount-manager.html")
 					});
 					break;
 				case "del":
 					if (!Business.verifyRight("SettAcct_DELETE")) return;
 					$.dialog.confirm("删除的账户将不能恢复，请确认是否删除？", function() {
-						Public.ajaxPost("../basedata/settAcct/delete?action=delete", {
+						Public.ajaxPost(Public.WDURL + "/basedata/settAcct/delete?action=delete", {
 							id: b
 						}, function(a) {
 							a && 200 == a.status ? (parent.Public.tips({
